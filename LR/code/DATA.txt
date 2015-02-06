@@ -1,0 +1,3 @@
+train=../../train.txt
+test=../../test.txt
+c=1
