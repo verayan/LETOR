@@ -4,7 +4,7 @@ This project is about training ranking models so that top ranked documents relev
 
 The data set used is TREC dataset in LETOR from MSA. There are 44 features associated with each document including BM25, tf-idf and pagerank. More detailed info about the dataset can be found in Readme_TREC_dataset.pdf
 
-To train pair-wise LETOR model, the classification model(logistic regression and SVM) are used to find the best parameter values. A linear combination of features weighted by these parameter values can be used to give scores for webpages based on their relevance.
+To train pair-wise LETOR model, the classification model(logistic regression and SVM) are used to find the best parameter values. A linear combination of features are then weighted by these parameter values to give scores for webpages based on their relevance. The logistic regression model is implemented using stochastic gradient descent. As for SVM, [SVMLight](http://svmlight.joachims.org/)'s learning module(svm_learn) is used.
 
 ##Data Format:
 
@@ -14,4 +14,4 @@ For example, the line
 
 0 qid:11 1:31.77 2:32.44
 
-It means this document is irrelevant to query 11. It has 31.77 on first feature , 32.44 on second feature..
+It means this document is irrelevant to query 11. The first feature is 31.77.The second feature value is 32.44.
