@@ -18,7 +18,10 @@ It means this document is irrelevant to query 11. The first feature value is 31.
 
 ##Output
 The program reads a test set file and produce a raking file in the following format:
+
 ranking score for document1
+
 ranking score for document2
+
 ....
 
