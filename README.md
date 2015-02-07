@@ -8,10 +8,17 @@ To train pair-wise LETOR model, the classification model(logistic regression and
 
 ##Data Format:
 
-The training and test file share the same format.Each line represents a document. The first integer in the line means whether the document is relevant to a query.Next follows the query id and the values for 44 features. 
+The training and test file share the same format. Each line represents a document. The first integer in the line means whether the document is relevant to a query. Next follows the query id and the values for 44 features. 
 
 For example, the line
 
 0 qid:11 1:31.77 2:32.44
 
-It means this document is irrelevant to query 11. The first feature is 31.77.The second feature value is 32.44.
+It means this document is irrelevant to query 11. The first feature value is 31.77. The second feature value is 32.44.
+
+##Output
+The program reads a test set file and produce a raking file in the following format:
+ranking score for document1
+ranking score for document2
+....
+
