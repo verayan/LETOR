@@ -35,17 +35,19 @@ def gradient_descent(model, x, labels, threshold, rate, c):
 
 
 
-# rule of stopping update of w
+# rule of stopping updating parameter values
 def max_function(prob1, model1, prob2, model2, c, labels,threshold):
-    # print prob1
-    max1 = np.sum(np.multiply(np.log(prob1), labels) + np.multiply((1 - labels), np.log(1 - prob1))) - 0.5 * c * (
-        model1.dot(model1.T))[0, 0]
-    max2 = np.sum(np.multiply(np.log(prob2), labels) + np.multiply((1 - labels), np.log(1 - prob2))) - 0.5 * c * (
-        model2.dot(model2.T))[0, 0]
+    max1 = np.sum(np.multiply(np.log(prob1), labels) +
+           np.multiply((1 - labels), np.log(1 - prob1))) - 0.5 * c * (
+           model1.dot(model1.T))[0, 0]
+    max2 = np.sum(np.multiply(np.log(prob2), labels) +
+           np.multiply((1 - labels), np.log(1 - prob2))) - 0.5 * c * (
+           model2.dot(model2.T))[0, 0]
     return ((max2 - max1) < threshold or max2< max1)
 
 
 
+# normalize each feature set
 def normalize(row):
     s = math.sqrt(reduce(lambda x,y: x + y*y,row))
     return map(lambda x : x/s, row)
@@ -111,7 +113,8 @@ def main():
     (total_feature_matrix,total_labels) = read_train_data(train_file)
     initial_model = initialize_models(total_feature_matrix.shape[1])
     total_labels = total_labels.reshape((total_labels.shape[0],1))
-    finalmodel = gradient_descent(initial_model, total_feature_matrix, total_labels, args.threshold, args.rate, c)
+    finalmodel = gradient_descent(initial_model, total_feature_matrix,
+                 total_labels, args.threshold, args.rate, c)
     test_features = read_test_data(test_file)
     scores = np.dot(test_features,finalmodel.T)
     # predict the relevance score on the test set
